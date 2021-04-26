@@ -7,8 +7,10 @@ import fr.reminy.pokemon_discord.game.map.Map;
 import fr.reminy.pokemon_discord.game.render.Camera;
 import fr.reminy.pokemon_discord.game.render.GameRenderer;
 import org.javacord.api.entity.message.Message;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Optional;
 
@@ -27,7 +29,10 @@ public class PokemonGame {
     public void update() {
         BufferedImage rendered = getRenderer().render();
         String playerImageURL = GameHttpServer.INSTANCE.setPlayerImage(user.getId(), rendered);
-        linkedMessage.edit(playerImageURL);
+        EmbedBuilder embedBuilder = new EmbedBuilder();
+        embedBuilder.setColor(Color.WHITE);
+        embedBuilder.setImage(playerImageURL);
+        linkedMessage.edit(embedBuilder);
     }
 
     public boolean canPlay(User user) {
