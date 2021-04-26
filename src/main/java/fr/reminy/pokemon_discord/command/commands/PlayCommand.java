@@ -12,9 +12,11 @@ import fr.reminy.pokemon_discord.annotation.command.Register;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.MessageAuthor;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.event.message.MessageEvent;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
@@ -55,7 +57,11 @@ public class PlayCommand implements Command {
         DiscordApi api = event.getApi();
 
         PokemonGame finalPlayerGame = playerGame;
-        channel.sendMessage(playerImageURL).thenAccept(msg -> {
+
+        EmbedBuilder embedBuilder = new EmbedBuilder();
+        embedBuilder.setColor(Color.WHITE);
+        embedBuilder.setImage(playerImageURL);
+        channel.sendMessage(embedBuilder).thenAccept(msg -> {
             GameManager.INSTANCE.setLinkedMessage(msg, finalPlayerGame);
             msg.addReaction("⬅️");
             msg.addReaction("⬆️");
