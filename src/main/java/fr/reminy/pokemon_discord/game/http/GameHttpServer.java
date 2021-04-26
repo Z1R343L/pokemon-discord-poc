@@ -37,7 +37,7 @@ public class GameHttpServer {
     }
 
     public void start() throws IOException {
-        HttpServer server = HttpServer.create(new InetSocketAddress(80), 0);
+        HttpServer server = HttpServer.create(new InetSocketAddress(32768), 0);
         HttpContext context = server.createContext("/");
         server.setExecutor(Executors.newFixedThreadPool(10));
         context.setHandler(this::handleRequest);
@@ -87,8 +87,7 @@ public class GameHttpServer {
 
     public String setPlayerImage(long userId, BufferedImage image) {
         playerImages.put(userId, image);
-        //return "http://"+serverIP+":32768/?player=" + userId + "&cv=" + UUID.randomUUID();
-        return "http://" + serverIP + "/?player=" + userId + "&cv=" + UUID.randomUUID();
+        return "http://" + serverIP + ":32768/?player=" + userId + "&cv=" + UUID.randomUUID();
     }
 
     public Map<String, String> queryToMap(String query) {
