@@ -1,8 +1,8 @@
 package fr.reminy.pokemon_discord.command;
 
 public enum Category {
-    COMMON("Commandes usuelles"),
-    GAME("Commandes de jeu");
+    COMMON("Misc. Commands"),
+    GAME("Game Commands");
 
     private final String label;
 
