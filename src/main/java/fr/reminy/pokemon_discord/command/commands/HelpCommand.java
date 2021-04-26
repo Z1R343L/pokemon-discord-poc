@@ -10,6 +10,7 @@ import org.javacord.api.entity.message.MessageAuthor;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.event.message.MessageEvent;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -24,7 +25,7 @@ public class HelpCommand implements Command {
 
     @Override
     public String getDescription() {
-        return "Affiche la liste des commandes et leur fonction.";
+        return "List all commands (& how they work)";
     }
 
     @Override
@@ -37,6 +38,7 @@ public class HelpCommand implements Command {
         Map<Category, List<Command>> commands = Commands.list().stream().collect(Collectors.groupingBy(Command::getCategory));
 
         EmbedBuilder embedBuilder = new EmbedBuilder();
+        embedBuilder.setColor(Color.WHITE);
 
         for (Map.Entry<Category, List<Command>> commandsByCategory : commands.entrySet()) {
             Category category = commandsByCategory.getKey();

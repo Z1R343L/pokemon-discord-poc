@@ -19,15 +19,15 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 
 @Register
-public class AdventureCommand implements Command {
+public class PlayCommand implements Command {
     @Override
     public String[] getLabels() {
-        return new String[]{ "aventure", "a" };
+        return new String[]{ "play", "p" };
     }
 
     @Override
     public String getDescription() {
-        return "Démarrer ou reprendre une aventure Pokémon !";
+        return "Visit the World of Pokemon!";
     }
 
     @Override

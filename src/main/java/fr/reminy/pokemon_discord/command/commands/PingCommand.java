@@ -19,7 +19,7 @@ public class PingCommand implements Command {
 
     @Override
     public String getDescription() {
-        return "Un simple ping.";
+        return "-";
     }
 
     @Override
